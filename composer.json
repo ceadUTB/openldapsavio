@@ -1,7 +1,7 @@
 {
-    "name": "savio/openldap-savio",
+    "name": "utbvirtual/openldapsavio",
     "description": "An openldap auth driver for Laravel 5 and UTB Autentication.",
-    "keywords": ["Laravel", "openLDAP", "Auth", "SAVIO"],
+    "keywords": ["Laravel", "openLDAP", "Auth", "utbvirtual"],
     "license": "MIT",
     "authors": [
         {
