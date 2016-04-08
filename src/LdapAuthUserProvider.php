@@ -87,11 +87,8 @@ class LdapAuthUserProvider implements UserProviderInterface {
                 $credentials['group'] = $this->openLDAP->whichGroup($credentials['username']);
             foreach($userInfo as $key => $value)
                 $credentials[$key] = $value[0];
-            $user = User::where('codigo', '=', $credentials['username'])->first();
-            if (!$user) {
-                $user = ['codigo' => $credentials['username'], 'name' => $credentials['cn'], 'email' => $credentials['mail']];
-                User::create($user);
-            }
+            $user = new User;
+            $user = $user->createOrUpdateUser($credentials);
             return $user;
         }
     }
