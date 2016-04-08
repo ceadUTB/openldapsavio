@@ -1,7 +1,7 @@
-<?php namespace savio\openldapsavio;
+<?php namespace utbvirtual\openldapsavio;
 
 /**
- * @package   savio\openldapsavio
+ * @package   utbvirtual\openldapsavio
  * @author    Santiago <contacto@santiagomendoza.org>
  * @copyright Copyright (c) Santiago
  * @licence   http://mit-license.org/
