@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "savio\\openldapsavio\\": "src/"
+            "utbvirtual\\openldapsavio\\": "src/"
         }
     }
 }
