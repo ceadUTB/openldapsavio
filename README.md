@@ -1,8 +1,9 @@
 # Laravel 5 OpenLDAP Auth
-An OpenLDAP authentication driver for Laravel 5.
+Driver de autenticación para Laravel 5.
 
-##Installation
-Add to `composer.json` and install with `composer install` / `composer update`.
+
+##Instalación
+Agregar al `composer.json` e instalar con `composer install` / `composer update`.
 ```
 {
   require: {
@@ -11,18 +12,19 @@ Add to `composer.json` and install with `composer install` / `composer update`.
 }
 ```
 
-##Add to Laravel
-Open your `config/app.php` file and add the service provider to the providers array.
+##Agregar a Laravel
+Abre tu archivo `config/app.php` y agrega el service providers en el array de providers.
+
 ```
 utbvirtual\openldapsavio\LdapAuthServiceProvider::class
 ```
-Update your `config/auth.php` to use `ldap` driver.
+Actualiza tu archivo `config/auth.php` para usar el driver `ldap`.
 ```
 'driver' => 'ldap'
 ```
 
-##Configuration
-Manually create a `config/ldap.php` file and add the following:
+##Configuración
+Manualmente crear el archivo `config/ldap.php` y agregar lo siguiente:
 ```
 <?php
 
@@ -37,10 +39,22 @@ return [
 
 ?>
 ```
+Crear en el archivo App\User la función `createOrUpdateUser()` que reciba los credentials y toda la información de LDAP, que revise si el usuario existe, y si no, crearlo a partir de esos datos.
 
-##Extending
-If you wish to add your own functions, just modify any of the classes.
+Ejemplo:
 
-##About
-Based on package by [Kuan-Chien Chung(kcchung)](http://jaychung.tw)
-Edited by Santiago Mendoza
+```
+public function createOrUpdateUser($credentials){
+        $user = User::where('codigo', '=', $credentials['username'])->first();
+        if (!$user) {
+            $userdata = ['codigo' => $credentials['username'],
+            'name' => $credentials['cn'], 'email' => $credentials['mail']];
+            $user = User::create($userdata);
+        }
+        return $user;
+}
+```
+
+##Acerca de
+Basado en el paquete de [Kuan-Chien Chung(kcchung)](http://jaychung.tw) l5-openldap-auth.
+Edited by [Santiago Mendoza](http://www.santiagomendoza.org)
