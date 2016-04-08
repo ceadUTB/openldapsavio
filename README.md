@@ -6,7 +6,7 @@ Add to `composer.json` and install with `composer install` / `composer update`.
 ```
 {
   require: {
-    "kcchung/l5-openldap-auth": "dev-master"
+    "utbvirtual/openldapsavio": "dev-master"
   }
 }
 ```
@@ -14,7 +14,7 @@ Add to `composer.json` and install with `composer install` / `composer update`.
 ##Add to Laravel
 Open your `config/app.php` file and add the service provider to the providers array.
 ```
-kcchung\L5OpenldapAuth\LdapAuthServiceProvider::class
+utbvirtual\openldapsavio\LdapAuthServiceProvider::class
 ```
 Update your `config/auth.php` to use `ldap` driver.
 ```
@@ -42,4 +42,5 @@ return [
 If you wish to add your own functions, just modify any of the classes.
 
 ##About
-Created by [Kuan-Chien Chung(kcchung)](http://jaychung.tw)
+Based on package by [Kuan-Chien Chung(kcchung)](http://jaychung.tw)
+Edited by Santiago Mendoza
