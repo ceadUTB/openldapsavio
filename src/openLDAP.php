@@ -60,8 +60,17 @@ class openLDAP {
         }
 
         $ldapRdn = $this->LDAP_LOGINATTR . "=" . $username . "," . $this->LDAP_BASEDN;
-        $isConnected = ldap_bind(self::$ldapConnectId, $ldapRdn, $password);
-        
+
+        if (!extension_loaded('ldap')) {
+            Log::error('PHP LDAP extension not loaded.');
+            return false;
+        }
+
+        if (!($isConnected = @ldap_bind(self::$ldapConnectId, $ldapRdn, $password))) {
+            Log::error('Invalidad Credentials');
+            return false;
+        }
+
         return $isConnected;
     }
 
